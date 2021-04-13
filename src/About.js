@@ -2,14 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const About = ({ children }) => {
   const [cart, setCart] = useState([]);
-  //   const Remove=(selected)=>{
-  //   const a=cart.indexOf(selected);
-  //   let temp=[...cart]
-  //   temp.splice(a,1);
-  //     setCart(temp)
-  //   }
-  // console.log(cart)
-
+  
   useEffect(() => {
     const retireve = localStorage.getItem("cartItems");
     var Display = JSON.parse(retireve);
@@ -21,6 +14,7 @@ const About = ({ children }) => {
     const temp = [...cart];
     temp.splice(indexes, 1);
     setCart(temp);
+    
   };
 
 

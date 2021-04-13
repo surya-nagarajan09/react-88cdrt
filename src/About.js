@@ -1,8 +1,9 @@
-import React, { useContext } from "react";
+import React, { useContext,useState,use } from "react";
 import { ProductContext } from "./Context";
 
 const About = ({ children }) => {
   const { cart } = useContext(ProductContext);
+  const[cartDisplay,setcartDisplay]=useState([])
 //   const Remove=(selected)=>{
 //   const a=cart.indexOf(selected);
 //   let temp=[...cart]
@@ -10,15 +11,20 @@ const About = ({ children }) => {
 //     setCart(temp)
 //   }
 // console.log(cart)
-console.log(cart)
+const retrieve=localStorage.getItem("cartItems");
+ setcartDisplay(JSON.parse(retrieve))
+console.log(cartDisplay)
+
+use
+
   
 
   return (
     <div>{
-      cart.map((selected)=>(
+      cartDisplay.map((selected)=>(
         <div>
         <h1>{selected.title}</h1>
-        <button ></button>
+        <button >remove from count</button>
         </div>
       ))
     }

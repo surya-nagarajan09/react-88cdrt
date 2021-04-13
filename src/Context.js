@@ -17,20 +17,15 @@ const ContextProvider = ({ children }) => {
     };
     fetch();
   }, []);
- 
 
-  const addToCart = item => {
-    setCart([...cart, item]);
-  };
-  console.log(cart)
+  console.log(cart);
   return (
     <ProductContext.Provider
       value={{
         posts,
         setPosts,
         cart,
-        setCart,
-        addToCart
+        setCart
       }}
     >
       {children}

@@ -1,8 +1,13 @@
 import React, { useContext } from "react";
 import { ProductContext } from "./Context";
 const Home = ({ children }) => {
-  const { posts, addToCart ,cart} = useContext(ProductContext);
-  console.log(cart)
+  const { posts, cart, setCart } = useContext(ProductContext);
+
+  const addToCart = item => {
+    setCart([...cart, item]);
+  };
+
+  localStorage.setItem("cartItems", JSON.stringify(cart));
 
   return (
     <div>

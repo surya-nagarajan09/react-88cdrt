@@ -6,6 +6,13 @@ const ProductContext = createContext();
 const ContextProvider = ({ children }) => {
   const [posts, setPosts] = useState([]);
   const [cart, setCart] = useState([]);
+  const [user,setUser]=useState(false);
+
+  const fucntionAuthenticateuser=(response)=>{
+    if(response==="authenticateed");
+    setUser(true);
+
+  }
 
   useEffect(() => {
     const fetch = async () => {

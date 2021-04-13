@@ -1,37 +1,39 @@
-import React, { useContext,useState,use } from "react";
-import { ProductContext } from "./Context";
+import React, { useState, useEffect } from "react";
 
 const About = ({ children }) => {
-  const { cart } = useContext(ProductContext);
-  const[cartDisplay,setcartDisplay]=useState([])
-//   const Remove=(selected)=>{
-//   const a=cart.indexOf(selected);
-//   let temp=[...cart]
-//   temp.splice(a,1);
-//     setCart(temp)
-//   }
-// console.log(cart)
-const retrieve=localStorage.getItem("cartItems");
- setcartDisplay(JSON.parse(retrieve))
-console.log(cartDisplay)
+  const [cart, setCart] = useState([]);
+  //   const Remove=(selected)=>{
+  //   const a=cart.indexOf(selected);
+  //   let temp=[...cart]
+  //   temp.splice(a,1);
+  //     setCart(temp)
+  //   }
+  // console.log(cart)
 
-use
+  useEffect(() => {
+    const retireve = localStorage.getItem("cartItems");
+    var Display = JSON.parse(retireve);
+    setCart(Display);
+  }, []);
 
-  
+  const remove = index => {
+    const indexes = cart.indexOf(index);
+    const temp = [...cart];
+    temp.splice(indexes, 1);
+    setCart(temp);
+  };
+
 
   return (
-    <div>{
-      cartDisplay.map((selected)=>(
-        <div>
-        <h1>{selected.title}</h1>
-        <button >remove from count</button>
+    cart.length===0?(<div>glo</div>):(<div>
+      {cart.map((item,index) => (
+        <div key={index}>
+          <p>{item.title}</p>
+          <button onClick={() => remove(index)} >Rmove</button>
         </div>
-      ))
-    }
-   
-
+      ))}
     </div>
-
+    )
   );
 };
 

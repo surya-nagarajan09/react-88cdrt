@@ -1,19 +1,15 @@
 import React, { useContext } from "react";
 import { ProductContext } from "./Context";
-const Home = ({children}) => {
-  const { posts, cart, setCart} = useContext(ProductContext);
+const Home = ({ children }) => {
+  const { posts, addToCart ,cart} = useContext(ProductContext);
+  console.log(cart)
 
-
-  const addToCart=(item)=>{
-    setCart([...cart,item])
-
-  }
   return (
     <div>
       {posts.map(item => (
         <div key={item.id}>
           <h1>{item.title}</h1>
-          <button onClick={()=>addToCart(item)}>add to cart</button>
+          <button onClick={() => addToCart(item)}>add to cart</button>
         </div>
       ))}
     </div>
